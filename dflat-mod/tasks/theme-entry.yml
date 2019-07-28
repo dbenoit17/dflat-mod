@@ -1,0 +1,11 @@
+---
+- name: create dflat dconf entry
+  ini_file:
+    section: "{{ dconf_ns | replace('.', '/')}}"
+    option: "{{ key }}"
+    value: '{{ dconf_overrides[dconf_ns][key] }}'
+    path: /etc/dconf/db/local.d/00_dflat_theme
+  loop: '{{ dconf_overrides[dconf_ns].keys() | list }}'
+  loop_control:
+    loop_var: key
+

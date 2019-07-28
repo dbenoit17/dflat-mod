@@ -1,0 +1,15 @@
+---
+- name: remove gnome apps
+  dnf:
+    name: "{{ old_pkgs }}"
+    state: absent
+
+- name: update apps
+  dnf:
+    name: "*"
+    state: latest
+
+- name: install remix apps
+  dnf:
+    name:  "{{ new_pkgs }}"
+    state: present

@@ -1,0 +1,14 @@
+- name: create 00_dflat_theme
+  file:
+    path: /etc/dconf/db/local.d/00_dflat_theme
+    state: touch
+
+- name: create entry
+  include_tasks: theme-entry.yml
+  loop: "{{ dconf_overrides.keys() | list }}"
+  loop_control:
+    loop_var: dconf_ns
+
+- name: dconf update
+  shell: dconf update
+  

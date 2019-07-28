@@ -1,0 +1,13 @@
+---
+- name: remove gnome apps
+  shell: "rpm-ostree override remove {{ old_pkgs | difference(ostree_missing_pkgs) | join(' ') }} && touch ~/.gnome_apps_removed"
+  args:
+    creates: ~/.gnome_apps_removed
+
+- name: rpm-ostree upgrade
+  shell: rpm-ostree upgrade
+
+- name: install remix apps
+  shell: "rpm-ostree install --allow-inactive --idempotent {{ new_pkgs | join(' ') }} && touch ~/.new_apps_installed"
+  args:
+    creates: ~/.new_apps_installed

@@ -1,0 +1,8 @@
+---
+- hosts: workstation
+  become: true
+  vars:
+    dflat_install_mode: dnf
+  roles:
+  - ./dflat-mod
+

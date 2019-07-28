@@ -1,0 +1,203 @@
+---
+dflat_install_mode: dnf
+
+desktop_background_image: file:///usr/share/backgrounds/fedora-workstation/winter-in-bohemia.png
+
+lockscreen_background_image: file:///usr/share/backgrounds/fedora-workstation/winter-in-bohemia.png
+
+devtools_pkgs:
+- vim
+- racket
+- racket-devel
+- clang
+- clang-devel
+- llvm
+- llvm-devel
+- rust
+# @development tools
+- gettext
+- diffstat
+- doxygen
+- git
+- patch
+- patchutils
+- subversion
+- systemtap
+- archmage
+- buildbot
+- bzr
+- colordiff
+- cvs
+- cvs2cl
+- cvsgraph
+- cvsps
+- darcs
+- dejagnu
+- expect
+- gambas3-ide
+- git-annex
+- git-cola
+- git2cl
+- gitg
+- gtranslator
+- highlight
+- lcov
+- manedit
+- meld
+- mercurial
+- monotone
+- myrepos
+- nemiver
+- qgit
+- quilt
+- rapidsvn
+- rcs
+- robodoc
+- scanmem
+- subunit
+- svn2cl
+- tig
+- tkcvs
+- tortoisehg
+- translate-toolkit
+- utrac
+# @c development tools and libraries
+- autoconf
+- automake
+- binutils
+- bison
+- flex
+- gcc
+- gcc-c++
+- gdb
+- glibc-devel
+- libtool
+- make
+- pkgconf
+- strace
+- byacc
+- ccache
+- cscope
+- ctags
+- elfutils
+- indent
+- ltrace
+- perf
+- valgrind
+- ElectricFence
+- astyle
+- cbmc
+- check
+- cmake
+- coan
+- cproto
+- insight
+- nasm
+- pscan
+- python2-scons
+- remake
+- scorep
+- splint
+- trinity
+- yasm
+- zzuf
+
+gnome_pkgs:
+- nautilus
+- gnome-terminal
+- rhythmbox
+- cheese
+- gnome-calendar
+- gnome-calculator
+- evolution
+- gnome-photos
+- gnome-contacts
+- totem
+- gnome-classic-session
+- gnome-terminal-nautilus
+
+elementary_pkgs:
+- elementary-files
+- elementary-camera
+- elementary-music
+- elementary-photos
+- elementary-sound-theme
+- elementary-videos
+- elementary-calendar
+- elementary-theme
+- elementary-icon-theme
+- elementary-wallpapers-gnome
+- elementary-calendar
+- elementary-terminal-fish
+- elementary-icon-theme-gimp-palette
+- elementary-icon-theme-inkscape-palette
+
+extensions_pkgs:
+- gnome-shell-extension-apps-menu
+- gnome-shell-extension-pomodoro
+- gnome-shell-extension-places-menu
+- gnome-shell-extension-unite
+- gnome-shell-extension-background-logo
+- gnome-shell-extension-no-topleft-hot-corner
+- gnome-shell-extension-activities-configurator
+
+theme_pkgs:
+- fedora-workstation-backgrounds
+- paper-icon-theme
+
+nonfree_repos:
+- google-chrome
+- rpmfusion-nonfree-steam
+
+ostree_missing_pkgs:
+- rhythmbox
+- cheese
+- gnome-calendar
+- gnome-calculator
+- evolution
+- gnome-photos
+- gnome-contacts
+- totem
+
+misc_pkgs:
+- libselinux-python
+
+old_pkgs: "{{ gnome_pkgs }}"
+
+new_pkgs: "{{ devtools_pkgs + elementary_pkgs + extensions_pkgs + theme_pkgs + misc_pkgs }}"
+
+# strings need to be extra quoted
+# bools need to be lowercase and single quoted
+# ints should not be quated
+dconf_overrides:
+  org.gnome.desktop.background: 
+    picture-options: "'zoom'"
+    picture-uri: "'{{ desktop_background_image }}'"
+    primary-color: "'#000000000000'"
+    secondary-color: "'#000000000000'"
+  org.gnome.desktop.screensaver:
+    picture-options: "'zoom'"
+    picture-uri: "'{{ lockscreen_background_image }}'"
+    primary-color: "'#000000000000'"
+    secondary-color: "'#000000000000'"
+  org.gnome.settings-daemon.plugins.xsettings:
+    hinting: "'slight'"
+    antialiasing: "'grayscale'"
+  org.gnome.settings-daemon.plugins.color:
+    night-light-temperature: 5100
+  org.gnome.shell.extensions.activities-config:
+    activities-config-button-removed: 'false'
+    activities-config-hot-corner: 'false'
+    activities-config-button-no-icon: 'true'
+    activities-config-button-no-text: 'false'
+    original-activities-button-text: "'Db Mod'"
+    transparent-panel: 60
+  org.gnome.shell:
+    enabled-extensions: "['background-logo@fedorahosted.org','apps-menu@gnome-shell-extensions.gcampax.github.com','unite@hardpixel.eu','activities-config@nls1729','nohotcorner@azuri.free.fr']"
+  org.gnome.desktop.interface:
+    gtk-theme: "'elementary'"
+    icon-theme: "'Paper'"
+  io.elementary.terminal.settings:
+    natural-copy-paste: 'false'
+  org.gnome.desktop.sound:
+    theme-name: "'elementary'"

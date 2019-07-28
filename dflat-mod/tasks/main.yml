@@ -1,0 +1,13 @@
+---
+
+- include_tasks: dnf.yml
+  when: dflat_install_mode == 'dnf'
+
+- include_tasks: ostree.yml
+  when: dflat_install_mode == 'ostree'
+
+- include_tasks: theme.yml
+
+- debug:
+    msg: "Install complete.  Reboot system."
+  when: dflat_install_mode == 'ostree'
