@@ -4,11 +4,21 @@
     state: touch
 
 - name: create entry
-  include_tasks: theme-entry.yml
+  include_tasks: nest0/theme-entry.yml
   loop: "{{ dconf_overrides.keys() | list }}"
   loop_control:
     loop_var: dconf_ns
 
 - name: dconf update
   shell: dconf update
+
+- name: create 00_dflat_theme override
+  file:
+    path: /etc/dconf/db/local.d/locks/00_dflat_theme
+    state: touch
+
+- name: Set Db Mod Activities Text
+  lineinfile:
+    dest: /etc/dconf/db/local.d/locks/00_dflat_theme
+    line: /org/gnome/shell/extensions/activities-config/activities-config-button-text
   

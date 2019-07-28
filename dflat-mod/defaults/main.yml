@@ -190,7 +190,7 @@ dconf_overrides:
     activities-config-hot-corner: 'false'
     activities-config-button-no-icon: 'true'
     activities-config-button-no-text: 'false'
-    original-activities-button-text: "'Db Mod'"
+    activities-config-button-text: "'Db Mod'"
     transparent-panel: 60
   org.gnome.shell:
     enabled-extensions: "['background-logo@fedorahosted.org','apps-menu@gnome-shell-extensions.gcampax.github.com','unite@hardpixel.eu','activities-config@nls1729','nohotcorner@azuri.free.fr']"
