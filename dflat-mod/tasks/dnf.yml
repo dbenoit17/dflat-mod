@@ -9,7 +9,7 @@
     name: "*"
     state: latest
 
-- name: install remix apps
+- name: install custom apps
   dnf:
     name:  "{{ new_pkgs }}"
     state: present

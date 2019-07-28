@@ -7,7 +7,7 @@
 - name: rpm-ostree upgrade
   shell: rpm-ostree upgrade
 
-- name: install remix apps
+- name: install custom apps
   shell: "rpm-ostree install --allow-inactive --idempotent {{ new_pkgs | join(' ') }} && touch ~/.new_apps_installed"
   args:
     creates: ~/.new_apps_installed
