@@ -1,0 +1,9 @@
+#!/usr/bin/python3
+
+import os 
+
+dflat_mod_dir = os.path.dirname(os.path.realpath(__file__))
+inventory = "{}/inventory".format(dflat_mod_dir)
+
+os.system("ansible-playbook {dir}/dflat-mod.yml -i {inventory}".format(dir=dflat_mod_dir, inventory=inventory))
+

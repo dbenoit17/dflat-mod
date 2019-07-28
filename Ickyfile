@@ -1,0 +1,6 @@
+name: dflat-mod
+executables: dflat-install
+yum_requires:
+  - python3
+  - ansible
+  - libselinux-python

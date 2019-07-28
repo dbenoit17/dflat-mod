@@ -201,3 +201,9 @@ dconf_overrides:
     natural-copy-paste: 'false'
   org.gnome.desktop.sound:
     theme-name: "'elementary'"
+
+dconf_locks:
+- org.gnome.shell.extensions.activities-config.activities-config-button-text
+- org.gnome.shell.extensions.activities-config.activities-config-button-no-text
+- org.gnome.shell.extensions.activities-config.transparent-panel
+- io.elementary.terminal.settings.natural-copy-paste

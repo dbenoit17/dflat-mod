@@ -9,16 +9,17 @@
   loop_control:
     loop_var: dconf_ns
 
-- name: dconf update
-  shell: dconf update
-
 - name: create 00_dflat_theme override
   file:
     path: /etc/dconf/db/local.d/locks/00_dflat_theme
     state: touch
 
-- name: Set Db Mod Activities Text
+- name: Set dconf locks
   lineinfile:
     dest: /etc/dconf/db/local.d/locks/00_dflat_theme
-    line: /org/gnome/shell/extensions/activities-config/activities-config-button-text
-  
+    line: "/{{ item | replace ('.', '/') }}"
+  with_items: "{{ dconf_locks }}"
+
+- name: dconf update
+  shell: dconf update
+
